@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calc</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <section class="calc">
+        <div class="calc__container">
+            <div class="calc__ranges">
+                <div class="calc-slider">
+                    <p>Storage: <span class="calc-slider__value">0</span> Gb</p>
+                    <input id="storage" class="calc-slider__range" type="range" value="0" min="0" max="1000"
+                        oninput="rangeSlider(this)">
+                </div>
+                <div class="calc-slider">
+                    <p>Transfer: <span class="calc-slider__value">0</span> Gb</p>
+                    <input id="transfer" class="calc-slider__range" type="range" value="0" min="0" max="1000"
+                        oninput="rangeSlider(this)">
+                </div>
+            </div>
+            <div class="calc__value">
+                <div class="calc__item" id="backblaze">
+                    <p class="calc__brand">backblaze</p>
+                    <div class="calc__result"></div>
+                </div>
+                <div class="calc__item" id="bunny">
+                    <div class="calc__legend">
+                        <p class="calc__brand">bunny</p>
+                        <button id="hdd" class="button active" onclick="setActive(this)">HDD</button>
+                        <button id="ssd" class="button" onclick="setActive(this)">SSD</button>
+                    </div>
+                    <div class="calc__result"></div>
+                </div>
+                <div class="calc__item" id="scaleway">
+                    <div class="calc__legend">
+                        <p class="calc__brand">scaleway</p>
+                        <button id="multi" class="button active" onclick="setActive(this)">Multi</button>
+                        <button id="single" class="button" onclick="setActive(this)">Single</button>
+                    </div>
+                    <div class="calc__result"></div>
+                </div>
+                <div class="calc__item" id="vultr">
+                    <p class="calc__brand">vultr</p>
+                    <div class="calc__result"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="main.js"></script>
+</body>
+
+</html>
