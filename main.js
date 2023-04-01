@@ -101,6 +101,11 @@ const sumScaleway = () => {
     return (storageSum + transferSum).toFixed(2);
 }
 
+const calcProgressResult = (res) => {
+    const sum = 2 + Number(res);
+    return `${sum}vw`;
+}
+
 //Main calculation
 const calculate = () => {
     const resultArray = document.querySelectorAll('.calc__item');
@@ -112,28 +117,41 @@ const calculate = () => {
         switch (resultId) {
             case 'bunny':
                 outputResult.innerHTML = `<span>${sumBunny()} $</span>`
-                outputResult.style.height = `calc(20px + ${sumBunny()/2}vh)`
+                outputResult.style.height = calcProgressResult(sumBunny())
                 break;
 
             case 'scaleway':
                 outputResult.innerHTML = `<span>${sumScaleway()} $</span>`
-                outputResult.style.height = `calc(20px + ${sumScaleway()/2}vh)`
+                outputResult.style.height = calcProgressResult(sumScaleway())
                 break;
             
             default:
                 outputResult.innerHTML = `<span>${sumSimple(resultId)} $</span>`
-                outputResult.style.height = `calc(20px + ${sumSimple(resultId)/2}vh)`
+                outputResult.style.height = calcProgressResult(sumSimple(resultId))
                 break;
         }
     });
 }
 
 //Init sliders
-const rangeSlider = (el) => {
-    el.previousElementSibling.firstChild.nextElementSibling.innerText = el.value;
-    storageNum = document.getElementById('storage').value;
-    transferNum = document.getElementById('transfer').value;
+const progressCalc = (num) => {
+    return (num / 1000 * 100);
+}
+
+const getValue = (e) => {
+    let currentValue = Number(e.value);
+    const currentId = e.getAttribute('data-id');
+    const sameValue = document.querySelectorAll(`input[data-id = ${currentId}]`);
+    if (currentValue > 1000) {
+        e.value = 1000;
+        currentValue = 1000;
+    }
+    sameValue.forEach((el) => el.value = currentValue);
+    storageNum = document.querySelector(`input[data-id = storage]`).value;
+    transferNum = document.querySelector(`input[data-id = transfer]`).value;
+    document.getElementById('storage').style.background = `linear-gradient(to right, var(--teal), var(--teal) ${progressCalc(storageNum)}%, var(--shade) ${progressCalc(storageNum)}%, var(--shade) 100%)`;
+    document.getElementById('transfer').style.background = `linear-gradient(to right, var(--teal), var(--teal) ${progressCalc(transferNum)}%, var(--shade) ${progressCalc(transferNum)}%, var(--shade) 100%)`;
     calculate()
     findMin()
-};
+}
     

@@ -14,24 +14,32 @@
         <div class="calc__container">
             <div class="calc__ranges">
                 <div class="calc-slider">
-                    <p>Storage: <span class="calc-slider__value">0</span> Gb</p>
-                    <input id="storage" class="calc-slider__range" type="range" value="0" min="0" max="1000"
-                        oninput="rangeSlider(this)">
+                    <div>Storage:
+                        <input data-id="storage" class="calc-slider__value" type="number" max="1000"
+                            oninput="getValue(this)" value="0" /> Gb
+                    </div>
+                    <input data-id="storage" class="calc-slider__range" type="range" value="0" min="0" max="1000"
+                        oninput="getValue(this)">
+                    <div id="storage" class="calc-slider__progress"></div>
                 </div>
                 <div class="calc-slider">
-                    <p>Transfer: <span class="calc-slider__value">0</span> Gb</p>
-                    <input id="transfer" class="calc-slider__range" type="range" value="0" min="0" max="1000"
-                        oninput="rangeSlider(this)">
+                    <div>Transfer:
+                        <input data-id="transfer" class="calc-slider__value" type="number" max="1000"
+                            oninput="getValue(this)" value="0" /> Gb
+                    </div>
+                    <input data-id="transfer" class="calc-slider__range" type="range" value="0" min="0" max="1000"
+                        oninput="getValue(this)">
+                    <div id="transfer" class="calc-slider__progress"></div>
                 </div>
             </div>
             <div class="calc__value">
                 <div class="calc__item" id="backblaze">
-                    <p class="calc__brand">backblaze</p>
+                    <p class="calc__brand"><img class="calc__brand-logo" src="img/BLZE.svg" width="20">backblaze</p>
                     <div class="calc__result"></div>
                 </div>
                 <div class="calc__item" id="bunny">
                     <div class="calc__legend">
-                        <p class="calc__brand">bunny</p>
+                        <p class="calc__brand"><img class="calc__brand-logo" src="img/bunny.svg" width="20">bunny</p>
                         <button id="hdd" class="button active" onclick="setActive(this)">HDD</button>
                         <button id="ssd" class="button" onclick="setActive(this)">SSD</button>
                     </div>
@@ -39,14 +47,16 @@
                 </div>
                 <div class="calc__item" id="scaleway">
                     <div class="calc__legend">
-                        <p class="calc__brand">scaleway</p>
+                        <p class="calc__brand"><img class="calc__brand-logo" src="img/scaleway.svg" width="20">scaleway
+                        </p>
                         <button id="multi" class="button active" onclick="setActive(this)">Multi</button>
                         <button id="single" class="button" onclick="setActive(this)">Single</button>
                     </div>
                     <div class="calc__result"></div>
                 </div>
                 <div class="calc__item" id="vultr">
-                    <p class="calc__brand">vultr</p>
+                    <p class="calc__brand"><img class="calc__brand-logo" src="img/vultr-seeklogo.com.svg"
+                            width="20">vultr</p>
                     <div class="calc__result"></div>
                 </div>
             </div>
