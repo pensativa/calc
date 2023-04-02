@@ -104,20 +104,31 @@ body {
     transition: .15s ease-in-out;
 }
 
-.calc-slider__range::-moz-range-thumb:hover,
-.calc-slider__range::-moz-range-thumb:active,
-.calc-slider__range::-webkit-slider-thumb:hover,
-.calc-slider__range::-webkit-slider-thumb:active {
+.calc-slider__range:hover::-moz-range-thumb,
+.calc-slider__range:active::-moz-range-thumb {
+    background: var(--teal);
+}
+
+
+.calc-slider__range:hover::-webkit-slider-thumb,
+.calc-slider__range:active::-webkit-slider-thumb {
     background: var(--teal);
 }
   
-.calc-slider__range:focus::-moz-range-thumb,
-.calc-slider__range:focus::-webkit-slider-thumb {
-    box-shadow: 0 0 0 3px var(--shade),
-                0 0 0 6px var(--teal);
+.calc-slider__range:focus::-moz-range-thumb {
+    box-shadow: 0 0 3px 3px var(--shade);
 }
 
-.calc-slider__range::-moz-range-progress,
+
+.calc-slider__range:focus::-webkit-slider-thumb {
+    box-shadow: 0 0 3px 3px var(--shade);
+}
+
+.calc-slider__range::-moz-range-progress {
+    background: var(--teal);
+    border: 0;
+}
+
 .calc-slider__range::-ms-fill-lower {
     background: var(--teal);
     border: 0;
@@ -149,6 +160,18 @@ input::-moz-focus-outer {
   font-weight: inherit;
   width: 50px;
   height: auto;
+  outline: none;
+  cursor:  url(img/heroicons_pencil-square.svg) 4 12, auto;
+}
+
+.calc-slider__value:focus-visible {
+  cursor: none;
+}
+
+.calc-slider__value::-webkit-outer-spin-button,
+.calc-slider__value::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 @media screen and (min-width: 992px) {
@@ -158,6 +181,9 @@ input::-moz-focus-outer {
   .calc-slider {
     margin: 60px 0 0 0;
     font-size: 20px;
+  }
+  .calc-slider__value {
+    width: 62px;
   }
 }
 

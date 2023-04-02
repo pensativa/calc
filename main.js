@@ -59,8 +59,8 @@ const sumSimple = (title) => {
     const total = sumHandle(storage, 0.01);
     if (total > min) {
         return total.toFixed(2);
-    } else if (total === 0) {
-        return 0.00;
+    } else if (total == 0) {
+        return '0.00';
     } else {
       return min.toFixed(2)
     }
