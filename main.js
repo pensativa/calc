@@ -1,4 +1,4 @@
-//base values
+//init values
 
 let storageNum = 0;
 let transferNum = 0;
@@ -22,13 +22,15 @@ const setActive = (el) => {
 }
 
 //Finding the smallest result
+const findMinHandle = (item) => {
+    return Number(item.innerText.replace(/\D+/g,"")) / 100
+}
 const findMin = () => {
   const results = document.querySelectorAll('.calc__result');
   const numbers = []
 
   results.forEach(res => {
-    res.classList.remove('min')
-    let num = Number(res.innerText.replace(/\D+/g,"")) / 100
+    const num = findMinHandle(res);
     numbers.push(num)
   });
 
@@ -36,18 +38,12 @@ const findMin = () => {
   min.sort((a,b) => a - b);
   let i = min[0];
 
-  results.forEach(res => res.classList.remove('min'));
-
   if (storageNum == 0 && transferNum == 0) {
-    return
+    results.forEach(res => res.classList.remove('min'));
+    return;
   }
 
-  results[numbers.indexOf(min[0])].classList.add('min');
-  for (let n = 1; n < min.length; n++) {
-    if (i === Number(min[n])) {
-      results[numbers.lastIndexOf(min[n])].classList.add('min')
-    }
-  }
+   results.forEach(res => findMinHandle(res) === i ? res.classList.add('min') : res.classList.remove('min'));
 }
 
 //calculation backblaze or vultr
@@ -154,4 +150,3 @@ const getValue = (e) => {
     calculate()
     findMin()
 }
-    

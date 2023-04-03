@@ -1,4 +1,4 @@
-### It's a testing calculator, which will compare the prices of different providers. And it's created for improving tools like TypeScript and Jestjs.
+### It's a testing calculator, which will compare the prices of different providers. Prices aren't real. And it's created for improving my knowledges.
 
 # Task description:
 * The graph is vertical for wide screens and horizontal for narrow ones.
@@ -33,7 +33,7 @@ minimum payment is $5.
 Storage price: $0.01.
 Transfer price: $0.01.
 
-## Examples for checking the correctness of the calculation (using in tests):
+## Examples for checking the correctness of the calculation:
 a) Storage 50 GB, Transfer 50 GB:
 backblaze.com = $7.
 bunny.net HDD = 1$, SSD = 1.5$.
